@@ -1,0 +1,518 @@
+<title>Seven Suppers — Week of 20 July</title>
+<style>
+  :root {
+    --paper: #FAFBF7; --card: #FFFFFF; --ink: #1E2B22; --muted: #5B6A5E; --line: #DCE4DA;
+    --basil: #2E7D4F; --basil-soft: #E7F1E9; --tomato: #C9432F; --tomato-soft: #F9E9E5;
+    --butter: #B07A1E; --butter-soft: #F7EEDA;
+    --shadow: 0 1px 2px rgba(30,43,34,.06), 0 4px 14px rgba(30,43,34,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper:#141A15; --card:#1C241D; --ink:#E8EDE7; --muted:#9DAB9E; --line:#2E392F;
+      --basil:#5FB183; --basil-soft:#21362A; --tomato:#E4715C; --tomato-soft:#3A241F;
+      --butter:#D8A44C; --butter-soft:#383021; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25); }
+  }
+  :root[data-theme="dark"] { --paper:#141A15; --card:#1C241D; --ink:#E8EDE7; --muted:#9DAB9E; --line:#2E392F;
+    --basil:#5FB183; --basil-soft:#21362A; --tomato:#E4715C; --tomato-soft:#3A241F;
+    --butter:#D8A44C; --butter-soft:#383021; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25); }
+  :root[data-theme="light"] { --paper:#FAFBF7; --card:#FFFFFF; --ink:#1E2B22; --muted:#5B6A5E; --line:#DCE4DA;
+    --basil:#2E7D4F; --basil-soft:#E7F1E9; --tomato:#C9432F; --tomato-soft:#F9E9E5;
+    --butter:#B07A1E; --butter-soft:#F7EEDA; --shadow: 0 1px 2px rgba(30,43,34,.06), 0 4px 14px rgba(30,43,34,.05); }
+
+  html { background: var(--paper); }
+  body { background: var(--paper); color: var(--ink); margin: 0; line-height: 1.55;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .serif { font-family: "Iowan Old Style", "Palatino Nova", Palatino, "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+  .wide { max-width: 1060px; margin: 0 auto; padding: 0 1.25rem; }
+  a { color: var(--basil); }
+
+  header { padding: 3.5rem 0 1.5rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; color: var(--basil); font-weight: 600; margin: 0 0 .8rem; }
+  h1 { font-family: "Iowan Old Style", Palatino, "Book Antiqua", Georgia, serif; font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1; font-weight: 600; margin: 0 0 .6rem; text-wrap: balance; }
+  .lede { color: var(--muted); max-width: 62ch; margin: 0; }
+
+  h2 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.55rem; font-weight: 600; margin: 0 0 .3rem; }
+  .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: .68rem; color: var(--muted); font-weight: 600; margin: 2.5rem 0 .5rem; }
+  section { padding-bottom: .5rem; }
+  p { margin: .7rem 0; }
+  .sub { color: var(--muted); }
+
+  .board { background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 1.75rem clamp(1rem, 3vw, 2.25rem) 2rem; margin: 1.25rem 0 2rem; }
+  .board-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem;
+    border-bottom: 2px solid var(--ink); padding-bottom: .8rem; margin-bottom: 1.3rem; }
+  .board-head h3 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.4rem; margin: 0; font-weight: 600; }
+  .board-head .mono { color: var(--muted); font-size: .8rem; }
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(235px, 1fr)); gap: .9rem; }
+  .meal { border: 1px solid var(--line); border-radius: 10px; padding: .9rem 1rem 1rem; display: flex; flex-direction: column; gap: .45rem; background: var(--paper); }
+  .meal .day { font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted);
+    display: flex; justify-content: space-between; }
+  .meal .day .time { letter-spacing: 0; font-weight: 500; }
+  .meal h4 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.06rem; line-height: 1.25; margin: 0; font-weight: 600; }
+  .meal h4 a { color: inherit; text-decoration: none; }
+  .meal h4 a:hover { color: var(--basil); }
+  .meal .note { font-size: .8rem; color: var(--muted); margin: 0; line-height: 1.45; flex: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .chip { font-size: .68rem; font-weight: 600; padding: .18rem .5rem; border-radius: 99px; background: var(--basil-soft); color: var(--basil); white-space: nowrap; }
+  .chip.warm { background: var(--butter-soft); color: var(--butter); }
+  .chip.link { background: var(--tomato-soft); color: var(--tomato); }
+  .board-foot { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .stat .v { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.4rem; font-weight: 600; }
+  .stat .l { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; }
+
+  .recipe { background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); margin: 1.25rem 0; overflow: hidden; }
+  .recipe-head { padding: 1.3rem clamp(1rem, 3vw, 2rem) 1rem; border-bottom: 1px solid var(--line); }
+  .recipe-head h3 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.35rem; margin: 0 0 .3rem; font-weight: 600; }
+  .recipe-meta { display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: .8rem; color: var(--muted); }
+  .recipe-body { display: grid; grid-template-columns: minmax(210px, 2fr) 3fr; }
+  @media (max-width: 640px) { .recipe-body { grid-template-columns: 1fr; } }
+  .recipe-ing { padding: 1.1rem clamp(1rem, 3vw, 2rem); border-right: 1px solid var(--line); }
+  @media (max-width: 640px) { .recipe-ing { border-right: none; border-bottom: 1px solid var(--line); } }
+  .recipe-steps { padding: 1.1rem clamp(1rem, 3vw, 2rem); }
+  .recipe h5 { margin: 0 0 .5rem; font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .recipe h5 + h5, .recipe-ing h5:not(:first-child) { margin-top: 1rem; }
+  .recipe-ing ul { list-style: none; margin: 0 0 .4rem; padding: 0; font-size: .86rem; }
+  .recipe-ing li { padding: .28rem 0; border-bottom: 1px dashed var(--line); display: flex; justify-content: space-between; gap: .75rem; }
+  .recipe-ing li:last-child { border-bottom: none; }
+  .recipe-ing .pantry { color: var(--muted); }
+  .recipe-ing .amt { color: var(--muted); white-space: nowrap; }
+  .recipe-steps ol { margin: 0; padding-left: 1.2rem; font-size: .9rem; }
+  .recipe-steps li { margin-bottom: .6rem; }
+  .recipe-steps li::marker { font-weight: 700; color: var(--basil); }
+  .tip { font-size: .82rem; background: var(--basil-soft); color: inherit; border-radius: 8px; padding: .6rem .8rem; margin-top: .9rem; }
+  .tip b { color: var(--basil); }
+
+  .list { background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 1.5rem clamp(1rem, 3vw, 2rem) 1.75rem; margin: 1.25rem 0 2rem; }
+  .list h3 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.3rem; margin: 0 0 1rem; font-weight: 600; }
+  .aisles { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.25rem 2rem; }
+  .aisle h5 { margin: 0 0 .4rem; font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .aisle ul { list-style: none; margin: 0; padding: 0; font-size: .86rem; }
+  .aisle li { display: flex; justify-content: space-between; gap: .75rem; padding: .26rem 0; border-bottom: 1px dashed var(--line); }
+  .aisle li:last-child { border-bottom: none; }
+  .aisle .p { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .aisle .use { display: block; font-size: .72rem; color: var(--muted); }
+  .total { display: flex; justify-content: space-between; border-top: 2px solid var(--ink); margin-top: 1.25rem; padding-top: .8rem; font-weight: 650; }
+
+  .callout { background: var(--butter-soft); border: 1px solid var(--butter); border-radius: 10px; padding: .9rem 1.1rem; font-size: .88rem; margin: 1.25rem 0; }
+  .callout b { color: var(--butter); }
+  footer { border-top: 1px solid var(--line); margin-top: 2.5rem; padding: 1.75rem 0 2.5rem; color: var(--muted); font-size: .84rem; }
+  :focus-visible { outline: 2px solid var(--basil); outline-offset: 2px; }
+</style>
+
+<header>
+  <div class="wide">
+    <p class="eyebrow">Seven Suppers · week 1 · the dry run</p>
+    <h1>Week of 20 July</h1>
+    <p class="lede">Seven dinners for four. High protein, easy weeknights, one meat-free night, oily fish on Wednesday, and a Sunday roast that's deliberately too big — its leftovers are next week's head start. Tap a meal to jump to its recipe.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wide">
+    <div class="board">
+      <div class="board-head">
+        <h3>The menu</h3>
+        <span class="mono">4 servings/night · est. £39.75 fresh shop · 34g avg protein</span>
+      </div>
+      <div class="menu-grid">
+        <div class="meal">
+          <div class="day"><span>Mon 20</span><span class="time">35 min</span></div>
+          <h4><a href="#mon">Greek turkey meatballs in tomato orzo</a></h4>
+          <p class="note">2%-fat turkey mince, feta, and a pepper roasted into the sauce — one dish, big protein, very little fat.</p>
+          <div class="chips"><span class="chip">560 kcal · 36g protein · 8g fat</span><span class="chip warm">£1.42/serving</span><span class="chip link">peppers ×2 · spinach ×2</span></div>
+        </div>
+        <div class="meal">
+          <div class="day"><span>Tue 21</span><span class="time">25 min</span></div>
+          <h4><a href="#tue">Chickpea &amp; spinach coconut curry</a></h4>
+          <p class="note">The meat-free night, almost entirely from the cupboard. Mild for the kids; chilli flakes at the table for adults.</p>
+          <div class="chips"><span class="chip">530 kcal · 19g protein · high fibre</span><span class="chip warm">£0.68/serving</span><span class="chip link">rice ×2 · spinach ×2</span></div>
+        </div>
+        <div class="meal">
+          <div class="day"><span>Wed 22</span><span class="time">30 min</span></div>
+          <h4><a href="#wed">Baked salmon, new potatoes, peas &amp; broccoli</a></h4>
+          <p class="note">The weekly oily fish. Frozen portions — same fish, notably cheaper per 100g than the chiller cabinet.</p>
+          <div class="chips"><span class="chip">650 kcal · 34g protein · omega-3</span><span class="chip warm">frozen beats fresh</span><span class="chip link">lemon ×2</span></div>
+        </div>
+        <div class="meal">
+          <div class="day"><span>Thu 23</span><span class="time">40 min</span></div>
+          <h4><a href="#thu">Hidden-veg beef chilli with rice</a></h4>
+          <p class="note">5% mince, grated carrot and a pepper vanish into the sauce. Yoghurt on top instead of soured cream.</p>
+          <div class="chips"><span class="chip">520 kcal · 42g protein · 11g fat</span><span class="chip warm">£1.28/serving</span><span class="chip link">yoghurt ×2 · carrots ×2</span></div>
+        </div>
+        <div class="meal">
+          <div class="day"><span>Fri 24</span><span class="time">25 min</span></div>
+          <h4><a href="#fri">Chicken fajitas</a></h4>
+          <p class="note">Friday crowd-pleaser: strips of breast fillet, the last two peppers, warm wraps, build-your-own at the table.</p>
+          <div class="chips"><span class="chip">700 kcal · 39g protein</span><span class="chip link">peppers ×2 · yoghurt ×2</span></div>
+        </div>
+        <div class="meal">
+          <div class="day"><span>Sat 25</span><span class="time">45 min</span></div>
+          <h4><a href="#sat">Sausage, butter bean &amp; tomato one-pot</a></h4>
+          <p class="note">This week's new recipe — reduced-fat sausages and butter beans in a rich tomato braise, bread for mopping.</p>
+          <div class="chips"><span class="chip">590 kcal · 29g protein</span><span class="chip warm">£1.20/serving</span><span class="chip">new — vote counts double</span></div>
+        </div>
+        <div class="meal">
+          <div class="day"><span>Sun 26</span><span class="time">1 h 40</span></div>
+          <h4><a href="#sun">Roast chicken with all the trimmings</a></h4>
+          <p class="note">Deliberately oversized. After dinner: strip the meat for next Monday's fried rice, simmer the carcass into stock.</p>
+          <div class="chips"><span class="chip">750 kcal · 40g protein</span><span class="chip warm">£1.05/serving</span><span class="chip link">seeds next week ×2</span></div>
+        </div>
+      </div>
+      <div class="board-foot">
+        <div class="stat"><div class="v">£39.75</div><div class="l">Fresh shop est. (£1.42/serving)</div></div>
+        <div class="stat"><div class="v">34g</div><div class="l">Avg protein / serving</div></div>
+        <div class="stat"><div class="v">13g</div><div class="l">Avg fat / serving</div></div>
+        <div class="stat"><div class="v">615</div><div class="l">Avg kcal / serving</div></div>
+        <div class="stat"><div class="v">12</div><div class="l">Cupboard items used</div></div>
+        <div class="stat"><div class="v">7 → 9</div><div class="l">Meals (Sun cooks ahead)</div></div>
+      </div>
+    </div>
+
+    <div class="callout"><b>Dry-run note:</b> prices, calories and macros are careful estimates against Tesco own-brand lines, to show the format — the live-priced version starts when the Basketeer connection lands in Phase 2. If any meal doesn't appeal, say the word and it gets re-planned around the rest.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <p class="kicker">The shopping list</p>
+    <div class="list">
+      <h3>Fresh shop — 24 items</h3>
+      <div class="aisles">
+        <div class="aisle">
+          <h5>Meat &amp; fish</h5>
+          <ul>
+            <li><span>Turkey breast mince 2% fat, 500g<span class="use">Mon meatballs</span></span><span class="p">£3.50</span></li>
+            <li><span>Beef mince 5% fat, 500g<span class="use">Thu chilli</span></span><span class="p">£3.30</span></li>
+            <li><span>Chicken breast fillets, 650g<span class="use">Fri fajitas</span></span><span class="p">£4.35</span></li>
+            <li><span>Reduced-fat pork sausages ×8<span class="use">Sat one-pot</span></span><span class="p">£2.50</span></li>
+            <li><span>Whole chicken, ~1.6kg<span class="use">Sun roast + next week</span></span><span class="p">£4.10</span></li>
+            <li><span>Frozen salmon portions ×4<span class="use">Wed</span></span><span class="p">£4.50</span></li>
+          </ul>
+        </div>
+        <div class="aisle">
+          <h5>Fruit &amp; veg</h5>
+          <ul>
+            <li><span>Peppers, 3-pack<span class="use">Mon ×1 · Fri ×2</span></span><span class="p">£1.65</span></li>
+            <li><span>Baby spinach, 240g<span class="use">Mon salad · Tue curry</span></span><span class="p">£1.50</span></li>
+            <li><span>Broccoli head<span class="use">Wed</span></span><span class="p">£0.85</span></li>
+            <li><span>New potatoes, 1kg<span class="use">Wed</span></span><span class="p">£1.15</span></li>
+            <li><span>White potatoes, 2.5kg<span class="use">Sun roasties</span></span><span class="p">£1.55</span></li>
+            <li><span>Carrots, 1kg<span class="use">Thu grated · Sun roast</span></span><span class="p">£0.65</span></li>
+            <li><span>Spring greens<span class="use">Sun</span></span><span class="p">£0.75</span></li>
+            <li><span>Onions, 3-pack<span class="use">Tue · Thu · Sat</span></span><span class="p">£0.95</span></li>
+            <li><span>Garlic bulb<span class="use">most nights</span></span><span class="p">£0.79</span></li>
+            <li><span>Ginger root<span class="use">Tue curry</span></span><span class="p">£0.50</span></li>
+            <li><span>Lemons ×2<span class="use">Mon · Wed</span></span><span class="p">£0.60</span></li>
+            <li><span>Lime<span class="use">Fri</span></span><span class="p">£0.30</span></li>
+            <li><span>Cucumber<span class="use">Mon salad</span></span><span class="p">£0.85</span></li>
+          </ul>
+        </div>
+        <div class="aisle">
+          <h5>Chilled &amp; bakery</h5>
+          <ul>
+            <li><span>Greek-style yoghurt 0% fat, 500g<span class="use">Thu · Fri</span></span><span class="p">£1.35</span></li>
+            <li><span>Feta / Greek salad cheese, 200g<span class="use">Mon</span></span><span class="p">£1.35</span></li>
+            <li><span>Tortilla wraps ×8<span class="use">Fri</span></span><span class="p">£1.10</span></li>
+            <li><span>Crusty baguette<span class="use">Sat</span></span><span class="p">£0.75</span></li>
+          </ul>
+          <h5 style="margin-top:1rem;">Total</h5>
+          <ul>
+            <li><span>24 items · 28+ servings</span><span class="p" style="font-weight:700;">≈ £39.75</span></li>
+          </ul>
+        </div>
+        <div class="aisle">
+          <h5>Assumed from your cupboard — shout if missing</h5>
+          <ul>
+            <li><span>Chopped tomatoes ×4 tins</span><span class="p">+£2.20</span></li>
+            <li><span>Chickpeas ×2 tins</span><span class="p">+£1.20</span></li>
+            <li><span>Butter beans ×2 tins</span><span class="p">+£1.20</span></li>
+            <li><span>Kidney beans ×1 tin</span><span class="p">+£0.55</span></li>
+            <li><span>Light coconut milk ×1 tin</span><span class="p">+£1.15</span></li>
+            <li><span>Orzo 500g · basmati rice</span><span class="p">+£2.95</span></li>
+            <li><span>Frozen peas · eggs · cheddar</span><span class="p">—</span></li>
+            <li><span>Fajita seasoning · oregano · curry powder · smoked paprika · stock cubes · oils · soy · tomato purée</span><span class="p">—</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="total"><span>Estimated basket if the cupboard holds</span><span>≈ £39.75 · £1.42/serving</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <p class="kicker">The recipes</p>
+
+    <div class="recipe" id="mon">
+      <div class="recipe-head">
+        <h3>Monday — Greek turkey meatballs in tomato orzo</h3>
+        <div class="recipe-meta"><span>Serves 4</span><span>35 minutes</span><span>560 kcal · 36g protein · 8g fat per serving</span><span>One ovenproof pan</span></div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-ing">
+          <h5>From this week's shop</h5>
+          <ul>
+            <li>Turkey breast mince (2% fat) <span class="amt">500g</span></li>
+            <li>Feta <span class="amt">100g</span></li>
+            <li>Pepper, chopped <span class="amt">1</span></li>
+            <li>Baby spinach (for salad) <span class="amt">half bag</span></li>
+            <li>Cucumber + lemon juice (salad) <span class="amt">1 + ½</span></li>
+          </ul>
+          <h5>From your cupboard</h5>
+          <ul>
+            <li class="pantry">Orzo <span class="amt">300g</span></li>
+            <li class="pantry">Chopped tomatoes <span class="amt">2 tins</span></li>
+            <li class="pantry">Garlic, oregano, olive oil <span class="amt">—</span></li>
+            <li class="pantry">Chicken stock cube <span class="amt">1</span></li>
+            <li class="pantry">Egg (binds meatballs) <span class="amt">1</span></li>
+          </ul>
+        </div>
+        <div class="recipe-steps">
+          <h5>Method</h5>
+          <ol>
+            <li>Oven to 200°C fan. Mix mince, egg, half the oregano, a grated garlic clove and plenty of pepper; roll into 16 balls. Kids are good at this bit.</li>
+            <li>Brown the meatballs in a little oil in an ovenproof pan, 3–4 minutes. Out they come.</li>
+            <li>Soften the chopped pepper and remaining garlic, then add tomatoes, orzo, stock (400ml) and the rest of the oregano. Stir well.</li>
+            <li>Meatballs back on top, crumble over the feta, lid or foil on, into the oven for 15 minutes until the orzo is tender.</li>
+            <li>Serve with a spinach and cucumber salad, lemon squeezed over.</li>
+          </ol>
+          <div class="tip"><b>Why it's here:</b> turkey breast mince is one of the best protein-per-pound, lowest-fat mains in the shop — this is the week's health-target anchor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe" id="tue">
+      <div class="recipe-head">
+        <h3>Tuesday — Chickpea &amp; spinach coconut curry</h3>
+        <div class="recipe-meta"><span>Serves 4</span><span>25 minutes</span><span>530 kcal · 19g protein · high fibre</span><span>One pan + rice pot</span></div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-ing">
+          <h5>From this week's shop</h5>
+          <ul>
+            <li>Onion, chopped <span class="amt">1</span></li>
+            <li>Ginger, grated <span class="amt">thumb</span></li>
+            <li>Baby spinach <span class="amt">half bag</span></li>
+          </ul>
+          <h5>From your cupboard</h5>
+          <ul>
+            <li class="pantry">Chickpeas <span class="amt">2 tins</span></li>
+            <li class="pantry">Light coconut milk <span class="amt">1 tin</span></li>
+            <li class="pantry">Chopped tomatoes <span class="amt">1 tin</span></li>
+            <li class="pantry">Curry powder + garam masala <span class="amt">1 tbsp + 1 tsp</span></li>
+            <li class="pantry">Garlic <span class="amt">2 cloves</span></li>
+            <li class="pantry">Basmati rice <span class="amt">300g</span></li>
+          </ul>
+        </div>
+        <div class="recipe-steps">
+          <h5>Method</h5>
+          <ol>
+            <li>Rice on first. Soften the onion in oil, 5 minutes; add garlic, ginger and the spices for 1 minute until fragrant.</li>
+            <li>Tip in tomatoes, coconut milk and drained chickpeas. Simmer 12 minutes until it thickens.</li>
+            <li>Crush a few chickpeas against the pan to body up the sauce — the free thickener.</li>
+            <li>Stir the spinach through in handfuls until just wilted. Season properly.</li>
+            <li>Serve over rice. Chilli flakes on the table for whoever wants heat.</li>
+          </ol>
+          <div class="tip"><b>Cook's note:</b> cook 600g of rice tonight, cool half fast and refrigerate — Thursday's chilli rice is then already done.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe" id="wed">
+      <div class="recipe-head">
+        <h3>Wednesday — Baked salmon, new potatoes, peas &amp; broccoli</h3>
+        <div class="recipe-meta"><span>Serves 4</span><span>30 minutes</span><span>650 kcal · 34g protein · omega-3</span><span>One tray + one pot</span></div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-ing">
+          <h5>From this week's shop</h5>
+          <ul>
+            <li>Frozen salmon portions (defrosted overnight) <span class="amt">4</span></li>
+            <li>New potatoes, halved <span class="amt">1kg</span></li>
+            <li>Broccoli, in florets <span class="amt">1 head</span></li>
+            <li>Lemon <span class="amt">1</span></li>
+          </ul>
+          <h5>From your cupboard</h5>
+          <ul>
+            <li class="pantry">Frozen peas <span class="amt">300g</span></li>
+            <li class="pantry">Olive oil, honey, soy sauce <span class="amt">glaze</span></li>
+            <li class="pantry">Butter <span class="amt">knob</span></li>
+          </ul>
+        </div>
+        <div class="recipe-steps">
+          <h5>Method</h5>
+          <ol>
+            <li>Oven to 200°C fan. Toss potatoes in oil and salt; roast 15 minutes before the fish goes in.</li>
+            <li>Mix 1 tsp honey with 1 tbsp soy. Sit the salmon on the tray with the potatoes, brush with the glaze.</li>
+            <li>Back in the oven for 12–14 minutes until the salmon flakes.</li>
+            <li>Meanwhile boil or steam broccoli and peas, 4 minutes; toss with the butter.</li>
+            <li>Lemon wedges over everything at the table.</li>
+          </ol>
+          <div class="tip"><b>Remember tonight:</b> move the whole chicken from freezer aisle plans to reality — and take Thursday's mince out of the freezer if you froze it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe" id="thu">
+      <div class="recipe-head">
+        <h3>Thursday — Hidden-veg beef chilli with rice</h3>
+        <div class="recipe-meta"><span>Serves 4</span><span>40 minutes</span><span>520 kcal · 42g protein · 11g fat per serving</span><span>One pan</span></div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-ing">
+          <h5>From this week's shop</h5>
+          <ul>
+            <li>Beef mince, 5% fat <span class="amt">500g</span></li>
+            <li>Onion, chopped <span class="amt">1</span></li>
+            <li>Carrots, grated <span class="amt">2</span></li>
+            <li>Greek yoghurt, to top <span class="amt">4 tbsp</span></li>
+          </ul>
+          <h5>From your cupboard</h5>
+          <ul>
+            <li class="pantry">Kidney beans <span class="amt">1 tin</span></li>
+            <li class="pantry">Chopped tomatoes <span class="amt">1 tin</span></li>
+            <li class="pantry">Tomato purée <span class="amt">1 tbsp</span></li>
+            <li class="pantry">Cumin, smoked paprika, mild chilli powder <span class="amt">1 tsp each</span></li>
+            <li class="pantry">Rice (Tuesday's batch) <span class="amt">for 4</span></li>
+          </ul>
+        </div>
+        <div class="recipe-steps">
+          <h5>Method</h5>
+          <ol>
+            <li>Brown the mince hard in a dry pan — 5% fat needs no added oil. Push aside; soften the onion in the same pan.</li>
+            <li>Grated carrot, garlic and spices in for 2 minutes. The carrot melts into invisibility, promise.</li>
+            <li>Tomatoes, purée, drained beans and a splash of water. Simmer gently 20 minutes.</li>
+            <li>Reheat Tuesday's rice until piping hot.</li>
+            <li>Bowls: rice, chilli, a spoon of yoghurt. Grated cheddar for those who've earned it.</li>
+          </ol>
+          <div class="tip"><b>Health swap:</b> yoghurt instead of soured cream saves ~9g fat per serving and nobody has ever noticed.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe" id="fri">
+      <div class="recipe-head">
+        <h3>Friday — Chicken fajitas</h3>
+        <div class="recipe-meta"><span>Serves 4</span><span>25 minutes</span><span>700 kcal · 39g protein</span><span>One pan, table service</span></div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-ing">
+          <h5>From this week's shop</h5>
+          <ul>
+            <li>Chicken breast, in strips <span class="amt">650g</span></li>
+            <li>Peppers, sliced <span class="amt">2</span></li>
+            <li>Tortilla wraps <span class="amt">8</span></li>
+            <li>Greek yoghurt <span class="amt">rest of pot</span></li>
+            <li>Lime <span class="amt">1</span></li>
+          </ul>
+          <h5>From your cupboard</h5>
+          <ul>
+            <li class="pantry">Fajita seasoning <span class="amt">2 tbsp</span></li>
+            <li class="pantry">Cheddar, grated <span class="amt">75g</span></li>
+            <li class="pantry">Onion <span class="amt">1</span></li>
+          </ul>
+        </div>
+        <div class="recipe-steps">
+          <h5>Method</h5>
+          <ol>
+            <li>Toss the chicken strips in the seasoning. Get the pan properly hot.</li>
+            <li>Sear the chicken in two batches so it browns rather than stews — 4 minutes each. Set aside.</li>
+            <li>Same pan: peppers and onion until charred at the edges. Chicken back in, squeeze of lime.</li>
+            <li>Warm the wraps in a dry pan or the toaster.</li>
+            <li>Everything to the table in dishes — building your own is the whole point of Friday.</li>
+          </ol>
+          <div class="tip"><b>Current champion:</b> this slot is reserved for the family favourite until the votes crown a new one.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe" id="sat">
+      <div class="recipe-head">
+        <h3>Saturday — Sausage, butter bean &amp; tomato one-pot</h3>
+        <div class="recipe-meta"><span>Serves 4</span><span>45 minutes</span><span>590 kcal · 29g protein</span><span>One pot · this week's new recipe</span></div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-ing">
+          <h5>From this week's shop</h5>
+          <ul>
+            <li>Reduced-fat pork sausages <span class="amt">8</span></li>
+            <li>Onion, sliced <span class="amt">1</span></li>
+            <li>Crusty baguette <span class="amt">1</span></li>
+          </ul>
+          <h5>From your cupboard</h5>
+          <ul>
+            <li class="pantry">Butter beans <span class="amt">2 tins</span></li>
+            <li class="pantry">Chopped tomatoes <span class="amt">1 tin</span></li>
+            <li class="pantry">Frozen spinach <span class="amt">3 blocks</span></li>
+            <li class="pantry">Smoked paprika, oregano, garlic <span class="amt">—</span></li>
+            <li class="pantry">Chicken stock cube <span class="amt">1</span></li>
+          </ul>
+        </div>
+        <div class="recipe-steps">
+          <h5>Method</h5>
+          <ol>
+            <li>Brown the sausages all over in a casserole, 8 minutes. Out; slice each into three chunks.</li>
+            <li>Soften the onion in the sausage fat; garlic, paprika and oregano in for a minute.</li>
+            <li>Tomatoes, 200ml stock, drained beans, spinach blocks and the sausages back in.</li>
+            <li>Simmer with the lid ajar for 25 minutes until thick and glossy.</li>
+            <li>Big bowls, torn baguette, and everyone mops.</li>
+          </ol>
+          <div class="tip"><b>New recipe:</b> Saturday's vote counts double this week — it decides whether this earns a place in the rotation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe" id="sun">
+      <div class="recipe-head">
+        <h3>Sunday — Roast chicken with all the trimmings</h3>
+        <div class="recipe-meta"><span>Serves 4 tonight + seeds 2 meals next week</span><span>1 h 40 (25 min hands-on)</span><span>750 kcal · 40g protein</span></div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-ing">
+          <h5>From this week's shop</h5>
+          <ul>
+            <li>Whole chicken <span class="amt">~1.6kg</span></li>
+            <li>White potatoes <span class="amt">1.5kg</span></li>
+            <li>Carrots <span class="amt">rest of bag</span></li>
+            <li>Spring greens <span class="amt">1 head</span></li>
+            <li>Lemon (in the cavity) <span class="amt">½</span></li>
+          </ul>
+          <h5>From your cupboard</h5>
+          <ul>
+            <li class="pantry">Olive oil, flour (gravy) <span class="amt">—</span></li>
+            <li class="pantry">Chicken stock cube <span class="amt">1</span></li>
+            <li class="pantry">Bay leaves, garlic <span class="amt">—</span></li>
+          </ul>
+        </div>
+        <div class="recipe-steps">
+          <h5>Method</h5>
+          <ol>
+            <li>Oven to 190°C fan. Lemon half and a garlic clove in the cavity; oil, salt, pepper on the skin. Roast ~1h20 (until juices run clear).</li>
+            <li>Parboil potatoes 8 minutes, shake the pan hard to roughen, then roast in hot oil for the final hour, turning once.</li>
+            <li>Carrots in with the potatoes for the last 35 minutes. Greens: 4 minutes in boiling water right before serving.</li>
+            <li>Rest the bird 15 minutes; make gravy from the pan juices, flour and stock.</li>
+            <li><strong>After dinner — the ten minutes that pays for itself:</strong> strip every scrap of meat into a tub (fried rice, Monday). Carcass, bay, an onion half into a pot of water; simmer while you clean up, then strain and refrigerate — next week's curry and gravy stock.</li>
+          </ol>
+          <div class="tip"><b>Cook once, eat three times:</b> tonight's £4.10 bird is also next Monday's dinner and a litre of proper stock.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <p class="kicker">After dinner</p>
+    <h2>Vote every night</h2>
+    <p style="max-width:70ch;">Everyone scores the meal out of 5 — just tell Claude (<span class="sub">"Monday: Andrew 4, rest of us 5, 3, 5 — kids loved rolling the meatballs"</span>) and it lands in the family score file. The votes are what turn this from a menu into <em>your</em> menu: by September the planner should know your family's taste better than any recipe site does.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wide">
+    Seven Suppers · week 1 dry run · prices are estimates pending the live Tesco connection (Phase 2). House recipes this week; once the family confirms the favourite-sites list, cards link to their sources. Preferences, cupboard and votes live in the "Seven Suppers" folder of the family vault.
+  </div>
+</footer>
