@@ -4,6 +4,7 @@ Context carried over from Claude's memory on the Mac:
 
 @CLAUDE-context.md
 
+<!-- key-docs:start -->
 ## Key docs (read these before re-deriving anything)
 **Topic:** The week's Seven Suppers meal plan as a page Laura opens on her phone.
 
@@ -11,3 +12,4 @@ Context carried over from Claude's memory on the Mac:
 - `Claude Projects/Family and home/Seven Suppers/Preferences.md`
 - `Claude Projects/How my apps work.md`
 - Cross-project map: `Claude Projects/Project Index.md`
+<!-- key-docs:end -->
