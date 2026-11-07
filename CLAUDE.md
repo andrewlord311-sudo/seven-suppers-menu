@@ -1,9 +1,5 @@
 # seven-suppers-menu
 
-Context carried over from Claude's memory on the Mac:
-
-@CLAUDE-context.md
-
 <!-- key-docs:start -->
 ## Key docs (read these before re-deriving anything)
 **Topic:** The week's Seven Suppers meal plan as a page Laura opens on her phone.
